@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.vanix.easygl</groupId>
+    <artifactId>learnopengl</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.encoding>UTF-8</project.encoding>
+        <project.java.version>21</project.java.version>
+        <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+        <maven.compiler.compilerVersion>${project.java.version}</maven.compiler.compilerVersion>
+        <maven.compiler.source>${project.java.version}</maven.compiler.source>
+        <maven.compiler.target>${project.java.version}</maven.compiler.target>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.vanix.easygl</groupId>
+            <artifactId>easygl-application</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.5.1</version>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>java</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
