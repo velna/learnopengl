@@ -39,7 +39,7 @@ public class C11_2_AntiAliasingMsaaOffscreen {
                     .subscribe((event) -> event.source().window().shouldClose(true));
             window.inputs().mouse().cursorMode(Mouse.CursorMode.CURSOR_DISABLED);
             graphics.depthTest().enable();
-            graphics.enable(Capability.Multisample);
+            graphics.multisample().enable();
 
             program.attachResource(Shader.Type.Vertex, "shaders/4_advanced_opengl/11.2.anti_aliasing.vs")
                     .attachResource(Shader.Type.Fragment, "shaders/4_advanced_opengl/11.2.anti_aliasing.fs")
@@ -126,7 +126,7 @@ public class C11_2_AntiAliasingMsaaOffscreen {
                     .minFilter(MinFilter.Linear)
                     .magFilter(MagFilter.Linear);
             intermediateFBO.bindFrame()
-                    .attach(FrameInnerBuffer.Attachment.ofColor(0), screenTexture)
+                    .attach(FrameInnerBuffer.Attachment.ofColor(0), screenTexture, 0)
                     .checkStatus()
                     .unbind();
 

@@ -145,7 +145,7 @@ public class C5_2_FrameBufferExercise1 {
                             textureColor.bind()
                                     .minFilter(MinFilter.Linear)
                                     .magFilter(MagFilter.Linear)
-                                    .load(Image.empty(Image.Format.RGB, window.frameBufferWidth(), window.frameBufferHeight())))
+                                    .load(Image.empty(Image.Format.RGB, window.frameBufferWidth(), window.frameBufferHeight())), 0)
                     .attach(FrameInnerBuffer.Attachment.DepthStencil,
                             renderBuffer.bind().storage(InternalPixelFormat.Base.DEPTH24_STENCIL8, window.frameBufferWidth(), window.frameBufferHeight()))
                     .checkStatus();
