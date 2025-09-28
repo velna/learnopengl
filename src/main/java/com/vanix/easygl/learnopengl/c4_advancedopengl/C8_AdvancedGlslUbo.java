@@ -2,12 +2,11 @@ package com.vanix.easygl.learnopengl.c4_advancedopengl;
 
 import com.vanix.easygl.application.g3d.ControllableCamera;
 import com.vanix.easygl.commons.bufferio.BufferStruct;
-import com.vanix.easygl.graphics.DataType;
-import com.vanix.easygl.window.input.Keyboard;
-import com.vanix.easygl.window.input.Mouse;
+import com.vanix.easygl.graphics.*;
 import com.vanix.easygl.window.Window;
 import com.vanix.easygl.window.WindowHints;
-import com.vanix.easygl.graphics.*;
+import com.vanix.easygl.window.input.Keyboard;
+import com.vanix.easygl.window.input.Mouse;
 import lombok.Data;
 import org.joml.Math;
 import org.joml.Matrix4f;
@@ -98,14 +97,14 @@ public class C8_AdvancedGlslUbo {
             });
             cubeVAO.bind().enableAttributePointers(3f);
 
-            var matricesUniformBlock = programRed.getUniformBlock("Matrices");
+            var matricesUniformBlock = programRed.interfaces().uniformBlock().getResource("Matrices");
             var bindingPoint = ubo.bind(Buffer.Target.Uniform)
                     .realloc(Buffer.DataUsage.StaticDraw, matricesUniformBlock.getBufferDataSize())
                     .bindAt(0);
             matricesUniformBlock.bind(bindingPoint);
             var matricesMapping = bindingPoint.createMapping(new Matrices(), matricesUniformBlock);
-            programGreen.getUniformBlock("Matrices").bind(bindingPoint);
-            programBlue.getUniformBlock("Matrices").bind(bindingPoint);
+            programGreen.interfaces().uniformBlock().getResource("Matrices").bind(bindingPoint);
+            programBlue.interfaces().uniformBlock().getResource("Matrices").bind(bindingPoint);
 
             var camera = new ControllableCamera(window.inputs().keyboard(), window.inputs().mouse());
             FloatBuffer mat4f = BufferUtils.createFloatBuffer(4 * 4);

@@ -150,7 +150,7 @@ public class C2_StencilTesting {
                 // draw floor as normal, but don't write the floor to the stencil buffer,
                 // we only care about the containers.
                 // We set its mask to 0x00 to not write to the stencil buffer.
-                frameBuffer.setStencilMask(0x00);
+                graphics.stencilTest().setMask(0x00);
 
                 //floor
                 planeVAO.bind();
@@ -161,7 +161,7 @@ public class C2_StencilTesting {
                 // 1st. render pass, draw objects as normal, writing to the stencil buffer
                 // --------------------------------------------------------------------
                 stencilTest.setFunction(CompareFunction.Always, 1, 0xff);
-                frameBuffer.setStencilMask(0xff);
+                graphics.stencilTest().setMask(0xff);
 
                 // cubes
                 cubeVAO.bind();
@@ -176,7 +176,7 @@ public class C2_StencilTesting {
                 // The parts of the buffer that are 1 are not drawn, thus only drawing the objects' size differences,
                 // making it look like borders.
                 stencilTest.setFunction(CompareFunction.NotEqual, 1, 0xff);
-                frameBuffer.setStencilMask(0x00);
+                graphics.stencilTest().setMask(0x00);
                 depthTest.disable();
                 singleColorProgram.bind();
                 float scale = 1.1f;
@@ -194,7 +194,7 @@ public class C2_StencilTesting {
                         .get(mat4f));
                 cubeDrawable.draw();
 
-                frameBuffer.setStencilMask(0xff);
+                graphics.stencilTest().setMask(0xff);
                 stencilTest.setFunction(CompareFunction.Always, 0, 0xff);
                 depthTest.enable();
 
